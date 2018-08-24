@@ -1,0 +1,18 @@
+.available {
+    color: green;
+    cursor: pointer;
+
+}
+
+.occupied {
+    color: #CC0000;
+}
+
+
+.list-group-item, .list-group-item:focus {
+    text-align: center;
+  }
+
+.list-group-item:hover, .list-group-item:focus {
+    background: #eee;
+  }

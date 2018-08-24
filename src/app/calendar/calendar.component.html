@@ -1,0 +1,47 @@
+<div class="container">
+
+    <mwl-demo-utils-calendar-header
+    [(view)]="view"
+    [(viewDate)]="viewDate">
+  </mwl-demo-utils-calendar-header>
+</div>
+<div class="jumbotron">
+    <div [ngSwitch]="view">
+        <mwl-calendar-month-view
+          *ngSwitchCase="'month'"
+          [viewDate]="viewDate"
+          [events]="events"
+          (dayClicked)="pickDate($event); basicModal.show(); clickedDate = $event.day.date">
+        </mwl-calendar-month-view>
+      </div>
+</div>
+
+<!-- <button type="button" class="btn btn-primary relative waves-light" (click)="basicModal.show()" mdbRippleRadius>Launch demo modal</button> -->
+
+<div style='overflow: scroll' mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 style='text-align: center' class="modal-title w-100" id="myModalLabel">{{ clickedDate | date }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <li class="list-group-item waves-effect available" (click)='test($event)' *ngFor='let hour of hours; let i = index'>{{hour}} <span></span></li>
+                  </div>
+            </div>
+            <div class="modal-footer" style='margin: 0 auto;'>
+                <button type="button" class="btn btn-danger waves-light" aria-label="Close" (click)="basicModal.hide()" mdbRippleRadius>יציאה</button>
+                <hr>
+                <button type="button" class="btn btn-warning relative waves-light" mdbRippleRadius>קבע תור</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
