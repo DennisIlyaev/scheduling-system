@@ -30,13 +30,9 @@ export class CalendarComponent implements OnInit {
   ];
 
   locale = 'he';
-
   clickedDate: Date;
-
-  available = true;
-
-  availablityText = '(פנוי)';
-  occupiedText = '(תפוס)';
+  selectedHour;
+  complete = false;
 
 
   weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
@@ -54,27 +50,35 @@ export class CalendarComponent implements OnInit {
       event.preventDefault();
     } else {
       this.clickedDate = event.day.date.getDate();
-      // console.log(event.day.date);
+      console.log(event.day.date);
     }
   }
 
-  test(item) {
+  lol() {
+    this.complete = true;
+    this.complete = false;
+  }
+
+
+  test(item, index) {
+    // this.selectedHour = true;
     // console.log(item.path[0].classList.remove('available'));
 
     // item.path[0].classList.replace('available', 'occupied'); Setting
 
     // console.log(item.path[0].classList.contains('available'));
-    // console.log(item.path[0].innerHTML.indexOf('תפוס') !== -1);
+    // console.log(item.path[0].innerHTML.indexOf('תפוס') ==! -1);
 
     // tslint:disable-next-line:quotemark
     // tslint:disable-next-line:no-unused-expression
-    // console.log(item.path[0].innerHTML.split(' ')[4].indexOf('פנוי') !== -1);
+    this.selectedHour = item.path[0].innerHTML;
+    this.complete === true ? item.path[0].style.display = 'none' : item.path[0].style.display = 'static';
 
 
-
-    item.path[0].innerHTML.indexOf('פנוי') !== -1 ? (item.path[0].classList
+    // item.path[0].innerHTML.indexOf('פנוי') !== -1 ? (item.path[0].classList
       // tslint:disable-next-line:no-unused-expression
-      .replace('available', 'occupied'), this.availablityText = '(תפוס)') : this.availablityText = '(פנוי)';
+      // .replace('available', 'occupied'), this.availablityText = '(תפוס)') : this.availablityText = '(פנוי)';
+      // item.path[0].classList.replace('available', 'occupied');
   }
 
 
