@@ -18,7 +18,7 @@
 
 <!-- <button type="button" class="btn btn-primary relative waves-light" (click)="basicModal.show()" mdbRippleRadius>Launch demo modal</button> -->
 
-<div style='overflow: scroll' mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+<div style='overflow: scroll' mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
     <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -29,19 +29,38 @@
             </div>
             <div class="modal-body">
                 <div class="list-group">
-                    <li class="list-group-item waves-effect available" (click)='test($event)' *ngFor='let hour of hours; let i = index'>{{hour}} <span></span></li>
+                    <li class="list-group-item waves-effect available" (click)='test($event, i); advModal.show()' *ngFor='let hour of hours; let i = index'>
+                {{hour}} 
+                </li>
                   </div>
             </div>
             <div class="modal-footer" style='margin: 0 auto;'>
                 <button type="button" class="btn btn-danger waves-light" aria-label="Close" (click)="basicModal.hide()" mdbRippleRadius>יציאה</button>
-                <hr>
-                <button type="button" class="btn btn-warning relative waves-light" mdbRippleRadius>קבע תור</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- WTFFFFFFFFFFFFFFF -->
 
-
-
-
+<div mdbModal #advModal="mdb-modal" class="modal fade adv" tabindex="-1" role="dialog" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+        <div class="modal-full-height modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">{{ clickedDate | date }}</h4>
+                </div>
+                <div class="modal-body advBody">
+                    <div class="md-form mb-5">
+                        <h3>האם ברצונך לקבוע תור לשעה:</h3>
+                        <hr>
+                        <h2 class='alignFix'>{{selectedHour}}</h2>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-danger waves-light" aria-label="Close" (click)="advModal.hide()" mdbRippleRadius>יציאה</button>
+                <hr>
+                <hr>
+                <button type="button" class="btn btn-success waves-light" aria-label="Close" (click)='lol()' mdbRippleRadius>אישור</button>
+                </div>
+            </div>
+        </div>
